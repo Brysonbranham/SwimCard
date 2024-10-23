@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LongFellow Whale Tales Program</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header {
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #005f99;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    .login-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .login-form label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      text-align: left;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-form button {
+      background-color: #005f99;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #004876;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to LongFellow Whale Tales Program</h1>
+    <p>Your progress tracker for water safety skills and fun learning!</p>
+  </header>
+
+  <section>
+    <div class="login-form">
+      <h2>Login to view your report card</h2>
+      <form action="/login" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>
