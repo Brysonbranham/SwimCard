@@ -28,7 +28,9 @@ The expected minimum amount of time each Sprint for each category is as follows:
 |----------|----------|:------:|--------------------------------------------|:-----------:|
 | 10/20/22 | 2:00pm   | MTG    | Created Project plan for this sprint       |    60    
 | 10/21/22 | 2:50pm   |  IM    | Created base view of the webpage           |    60       |
-
+| 10/23/22 | 2:00pm   | MTG    | Team update meeting for this sprint        |    60       |
+| 10/24/22 | 1:00pm   | TP     | Worked on setting up team project          |   90        |
+| 10/25/22 | 11:15pm  | IM     | Created and setup firebase hosting         | 60          |
 
 _Note: Add more rows as needed._
 
