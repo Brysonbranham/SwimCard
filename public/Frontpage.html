@@ -1,92 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LongFellow Whale Tales Program</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
-      color: #333;
-      text-align: center;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swim Lesson Report Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
 
-    header {
-      margin-bottom: 40px;
-    }
+        header {
+            margin-bottom: 40px;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #005f99;
-    }
+        h1 {
+            font-size: 2.5rem;
+            color: #005f99;
+        }
 
-    p {
-      font-size: 1.2rem;
-      color: #444;
-    }
+        p {
+            font-size: 1.2rem;
+            color: #444;
+        }
 
-    .login-form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      margin: 0 auto;
-    }
+        .login-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
 
-    .login-form label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      text-align: left;
-    }
+        .login-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            text-align: left;
+        }
 
-    .login-form input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    .login-form button {
-      background-color: #005f99;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+        .login-form button {
+            background-color: #005f99;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-    .login-form button:hover {
-      background-color: #004876;
-    }
-
-  </style>
+        .login-form button:hover {
+            background-color: #004876;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Welcome to LongFellow Whale Tales Program</h1>
-    <p>Your progress tracker for water safety skills and fun learning!</p>
-  </header>
+    <header>
+        <h1>Welcome to your Swimming Report Card!</h1>
+        <p>Your progress tracker for water safety skills and fun learning!</p>
+    </header>
 
-  <section>
-    <div class="login-form">
-      <h2>Login to view your report card</h2>
-      <form action="/login" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+    <section>
+        <div class="login-form">
+            <h2>Login to view your report card</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </section>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <script type="module">
+        // Firebase imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyD01IWz-f7El4NMXH66x6_yeqErb1hs68A",
+            authDomain: "swimlesson1-a6b62.firebaseapp.com",
+            projectId: "swimlesson1-a6b62",
+            storageBucket: "swimlesson1-a6b62.appspot.com",
+            messagingSenderId: "559608954358",
+            appId: "1:559608954358:web:e9cb94778395a7de9f9bd7",
+            measurementId: "G-C98VGSQ97N"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Login function
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Sign in the user with email and password
+            signInWithEmailAndPassword(auth, username, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log("Logged in:", user.email);
+                    // Redirect to a different page or update UI accordingly
+                    window.location.href = 'dashboard.html'; // Replace with your actual dashboard URL
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.error("Error logging in:", errorCode, errorMessage);
+                    alert("Login failed: " + errorMessage);
+                });
+        });
+    </script>
 
 </body>
 </html>
