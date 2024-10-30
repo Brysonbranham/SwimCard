@@ -76,8 +76,8 @@
         <div class="login-form">
             <h2>Login to view your report card</h2>
             <form id="loginForm">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Email:</label> <!-- Changed from Username to Email -->
+                <input type="email" id="username" name="username" required>
 
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
@@ -113,7 +113,7 @@
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the form from submitting the default way
 
-            const username = document.getElementById('username').value;
+            const username = document.getElementById('username').value; // Email
             const password = document.getElementById('password').value;
 
             // Sign in the user with email and password
@@ -121,8 +121,8 @@
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log("Logged in:", user.email);
-                    // Redirect to a different page or update UI accordingly
-                    window.location.href = 'dashboard.html'; // Replace with your actual dashboard URL
+                    // Redirect to the report card page
+                    window.location.href = 'reportCard.html'; // Update to the correct report card URL
                 })
                 .catch((error) => {
                     const errorCode = error.code;

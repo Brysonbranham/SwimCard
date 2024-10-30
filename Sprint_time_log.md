@@ -33,7 +33,7 @@ The expected minimum amount of time each Sprint for each category is as follows:
 | 10/25/22 | 11:15pm  | IM     | Created and setup firebase hosting         | 60    |
 | 10/25/22 | 2:00pm   | MTG    | Met as a team discussing Individual project|  60 |
 | 10/25/22 | 3:00pm   | IM     | Setup login  and registration system       |  60 |
-
+| 10/29/22 | 7:40pm   | IM     | Tried unsuccesfully to get past the loading| 120|
 
 
 _Note: Add more rows as needed._
