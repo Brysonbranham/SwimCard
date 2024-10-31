@@ -4,20 +4,103 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Swim Report Card</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .status-box {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc;
+      text-align: center;
+      cursor: pointer;
+      line-height: 30px; /* Center text vertically */
+    }
+    .checkmark {
+      color: green;
+      font-weight: bold;
+    }
+    .cross {
+      color: red;
+      font-weight: bold;
+    }
+    /* Styling for admin controls */
+    #admin-controls {
+      margin-top: 20px;
+      display: none; /* Initially hidden */
+    }
+    label {
+      margin-right: 10px;
+    }
+    select {
+      margin-bottom: 10px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Swim Report Card</h1>
+  
   <div id="user-info">
     <h2 id="user">Loading...</h2>
-    <div id="skills-list"></div>
-    <button id="edit-button" style="display: none;">Edit</button>
-  </div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
-  <script src="FirebaseConfig.js"></script> <!-- External file with your Firebase config -->
-  <script src="reportCard.js"></script> <!-- Report Card Logic -->
+    <!-- Dropdown for selecting students -->
+    <label for="student-selector">Select Student:</label>
+    <select id="student-selector">
+      <option value="" disabled selected>Select Student</option>
+    </select>
+
+    <table id="skills-table">
+      <thead>
+        <tr>
+          <th>Skill Name</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="skills-list"></tbody>
+    </table>
+  </div>
+  
+  <!-- Admin Controls Section -->
+  <div id="admin-controls">
+    <h2>Admin Skill Update</h2>
+    <label for="skillSelect">Select Skill:</label>
+    <select id="skillSelect">
+      <option value="Back float">Back float</option>
+      <option value="Back glide">Back glide</option>
+      <option value="Front float">Front float</option>
+      <option value="Front glide">Front glide</option>
+      <option value="Jump, push, turn, grab">Jump, push, turn, grab</option>
+      <option value="Roll">Roll</option>
+      <option value="Submerge">Submerge</option>
+      <option value="Swim, float, swim">Swim, float, swim</option>
+      <option value="Water exit">Water exit</option>
+    </select>
+
+    <label for="statusSelect">Select Status:</label>
+    <select id="statusSelect">
+      <option value="Passed">Passed</option>
+      <option value="Not Passed">Not Passed</option>
+    </select>
+
+    <button id="updateButton">Update Skill Status</button>
+  </div>
+  
+
+  <script type="module" src="FirebaseConfig.js"></script> 
+  <script type="module" src="reportCard.js"></script> 
 </body>
 </html>
-

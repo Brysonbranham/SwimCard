@@ -63,6 +63,7 @@
         .login-form button:hover {
             background-color: #004876;
         }
+        /* Your CSS styles here */
     </style>
 </head>
 <body>
@@ -76,7 +77,7 @@
         <div class="login-form">
             <h2>Login to view your report card</h2>
             <form id="loginForm">
-                <label for="username">Email:</label> <!-- Changed from Username to Email -->
+                <label for="username">Email:</label> 
                 <input type="email" id="username" name="username" required>
 
                 <label for="password">Password:</label>
@@ -87,51 +88,8 @@
         </div>
     </section>
 
-    <script type="module">
-        // Firebase imports
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyD01IWz-f7El4NMXH66x6_yeqErb1hs68A",
-            authDomain: "swimlesson1-a6b62.firebaseapp.com",
-            projectId: "swimlesson1-a6b62",
-            storageBucket: "swimlesson1-a6b62.appspot.com",
-            messagingSenderId: "559608954358",
-            appId: "1:559608954358:web:e9cb94778395a7de9f9bd7",
-            measurementId: "G-C98VGSQ97N"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        // Login function
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the default way
-
-            const username = document.getElementById('username').value; // Email
-            const password = document.getElementById('password').value;
-
-            // Sign in the user with email and password
-            signInWithEmailAndPassword(auth, username, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log("Logged in:", user.email);
-                    // Redirect to the report card page
-                    window.location.href = 'reportCard.html'; // Update to the correct report card URL
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error("Error logging in:", errorCode, errorMessage);
-                    alert("Login failed: " + errorMessage);
-                });
-        });
-    </script>
+    <script type="module" src="FirebaseConfig.js"></script>
+    <script type="module" src="login.js"></script> 
 
 </body>
 </html>
